@@ -1,6 +1,7 @@
 import { Space } from "../models/Space.js"
 import { Op, where } from "sequelize";
 import { ApiError } from "../utils/errors.js";
+import { parsePagination } from "../utils/pagination.js";
 
 const getSpaceForId = async (id) =>{
     const parsedId = Number(id)
