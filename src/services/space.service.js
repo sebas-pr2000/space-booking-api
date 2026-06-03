@@ -45,13 +45,13 @@ const getSpacesForFilters = async ({page, limit, search}) =>{
 }
 
 // ? Service sin try/catch — deja que los errores suban al controller:
-const registerSpace = async({ name, description, capacity }) => {
-  return await Space.create({ name, description, capacity })
+const registerSpace = async({ name, description, capacity, image }) => {
+  return await Space.create({ name, description, capacity, image })
   // ? Si Sequelize falla → lanza excepción → controller la atrapa → next(err) → handler global
 }
 
 // ? Service sin try/catch — deja que los errores suban al controller:
-const editSpaceForId = async({ id, name, description, capacity, isActive }) => {
+const editSpaceForId = async({ id, name, image, description, capacity, isActive }) => {
   const parsedId = Number(id);
 
   if (!Number.isInteger(parsedId) || parsedId < 1) {
@@ -64,6 +64,7 @@ const editSpaceForId = async({ id, name, description, capacity, isActive }) => {
   if (description !== undefined) fields.description = description
   if (capacity    !== undefined) fields.capacity = capacity
   if (isActive    !== undefined) fields.isActive = isActive
+  if (image    !== undefined) fields.image = image
 
   // ? Al menos un campo debe venir
   if (Object.keys(fields).length === 0) {

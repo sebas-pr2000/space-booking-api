@@ -52,10 +52,10 @@ const editSpace = async(req, res, next) =>{
     try {
         const {id} = req.params;
         //? El body ya viene validado por el middleware — aquí confiamos en los datos
-        const { name, description, capacity, isActive } = req.body
+        const { name, description, capacity, isActive ,image } = req.body
                 
         // ? El service se encarga de creacion de Space:
-        const result = await spaceService.editSpaceForId({ id, name, description, capacity, isActive})
+        const result = await spaceService.editSpaceForId({ id, name, image, description, capacity, isActive})
                 
         return res.status(200).json(new ApiResponse(result));
     } catch (error) {
