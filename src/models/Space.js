@@ -12,6 +12,10 @@ export const Space = sequelize.define("spaces",{
         type: DataTypes.STRING(100),
         allowNull: false,
     },
+    image: {
+        type: DataTypes.STRING(200),
+        allowNull: false,
+    },
     description: {
         type: DataTypes.STRING(1000),
         allowNull: false,
